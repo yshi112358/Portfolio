@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfolio | Yuki Shimada</title>
+  <meta name="description" content="Portfolio of Yuki Shimada">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Portfolio | 島田優希">
+  <meta property="og:description" content="デザインとエンジニアリングで価値を届けるポートフォリオ">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/assets/ogp.jpg">
+  <meta name="theme-color" content="#0b0b0f">
+</head>
+
+<body>
+  <header class="site-header" data-elevate>
+    <a class="logo" href="#home" aria-label="Home">▲</a>
+    <nav class="nav">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">◐</button>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <!-- moving gallery behind the headline -->
+      <div class="hero-gallery" aria-hidden="true">
+        <div class="track">
+          <img src="assets/ReImagigate-1.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-1.jpg" alt="" loading="lazy">
+          <img src="assets/intelino-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-1.jpg" alt="" loading="lazy">
+        </div>
+        <div class="track reverse" aria-hidden="true">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+        </div>
+        <div class="track" aria-hidden="true">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="hero-inner">
+        <div class="hero-label">
+          <h1 id="hero-title" class="headline">
+            Yuki Shimada
+            <span class="accent">Game × Engineering</span>
+          </h1>
+          <p class="subcopy">I love creation.</p>
+          <div class="cta">
+            <a href="#work" class="btn primary">View Work</a>
+            <a href="#contact" class="btn ghost">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section" aria-labelledby="work-title">
+      <div class="container">
+        <h2 id="work-title" class="section-title">Work</h2>
+        <div class="grid projects">
+          <article class="card" data-open="rhythmbullet" tabindex="0" aria-label="RhythmBulletの詳細を開く">
+            <div class="card-media" style="background-image:url('assets/RhythmBullet-1.jpg')"></div>
+            <div class="card-body">
+              <h3 class="card-title">Rhythm Bullet <span class="year-badge" aria-label="制作年">2025</span></h3>
+              <p class="card-meta">Unity プロジェクト</p>
+              <div class="tags" aria-label="関連キーワード">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">UniRx</span>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="card" data-open="intelino" tabindex="0" aria-label="intelino-jpの詳細を開く">
+            <div class="card-media" style="background-image:url('assets/intelino-1.jpg')"></div>
+            <div class="card-body">
+              <h3 class="card-title">intelino.jp <span class="year-badge" aria-label="制作年">2025</span></h3>
+              <p class="card-meta">企業Webサイト</p>
+              <div class="tags" aria-label="関連キーワード">
+                <span class="tag">Web</span>
+                <span class="tag">HTML/CSS/JS</span>
+                <span class="tag">Figma</span>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="card" data-open="meowater" tabindex="0" aria-label="MeoWaterの詳細を開く">
+            <div class="card-media" style="background-image:url('assets/MeoWater-1.jpg')"></div>
+            <div class="card-body">
+              <h3 class="card-title">MeoWater <span class="year-badge" aria-label="制作年">2023</span></h3>
+              <p class="card-meta">Unity プロジェクト</p>
+              <div class="tags" aria-label="関連キーワード">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">Figma</span>
+                <span class="tag">Photoshop</span>
+                <span class="tag">UniRx</span>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="card" data-open="reimagigate" tabindex="0" aria-label="Re:ImagiGateの詳細を開く">
+            <div class="card-media" style="background-image:url('assets/ReImagigate-1.jpg')"></div>
+            <div class="card-body">
+              <h3 class="card-title">Re:ImagiGate <span class="year-badge" aria-label="制作年">2021</span></h3>
+              <p class="card-meta">スタイリッシュACT / Unity C#</p>
+              <div class="tags" aria-label="関連キーワード">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">UniRx</span>
+              </div>
+
+            </div>
+          </article>
+
+          <article class="card" data-open="simobe-gtts" tabindex="0" aria-label="simobe_gTTSの詳細を開く">
+            <div class="card-media" style="background-image:url('assets/simobe-1.jpg')"></div>
+            <div class="card-body">
+              <h3 class="card-title">simobe_gTTS <span class="year-badge" aria-label="制作年">2021</span></h3>
+              <p class="card-meta">Discord Bot / Python</p>
+              <div class="tags" aria-label="関連キーワード">
+                <span class="tag">Python</span>
+                <span class="tag">Discord</span>
+                <span class="tag">gTTS</span>
+                <span class="tag">Bot</span>
+              </div>
+
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="section-title">About</h2>
+        <div class="about">
+          <p>
+            作ることが大好きです。
+          </p>
+          <ul class="list cols">
+            <li><strong>Focus</strong> ゲーム制作 / システム設計 / ツール制作</li>
+            <li><strong>Languages</strong> C# / Java / Python / JavaScript / HTML / CSS</li>
+            <li><strong>Tools</strong> Unity / Git / Figma / Photoshop</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title">Contact</h2>
+        <div class="contact">
+          <a class="btn primary" href="yuki.shimada.chuo27@gmail.com">メールで相談する</a>
+          <div class="socials">
+            <a href="#" aria-label="X/Twitter">X</a>
+            <a href="https://github.com/yshi112358" aria-label="GitHub">GitHub</a>
+            <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modals -->
+  <div class="modal" id="modal-intelino" role="dialog" aria-modal="true" aria-labelledby="modal-intelino-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-intelino-title">intelino-jp</h3>
+        <button class="modal-close" aria-label="閉じる" data-close>×</button>
+      </header>
+      <div class="modal-body">
+        <p>マトレイン株式会社のintelino事業サイト。情報設計、レスポンシブ、SCSS構成、軽量アニメーションを実装。</p>
+        <p><a class="btn primary small" href="https://github.com/yshi112358/intelino-jp" target="_blank"
+            rel="noreferrer">GitHubで見る</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-reimagigate" role="dialog" aria-modal="true" aria-labelledby="modal-reimagigate-title"
+    hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-reimagigate-title">Re:ImagiGate</h3>
+        <button class="modal-close" aria-label="閉じる" data-close>×</button>
+      </header>
+      <div class="modal-body">
+        <p>Unityによるスタイリッシュアクション。クラス設計とObserverパターン（UniRx）を活用。</p>
+        <p><a class="btn primary small" href="https://github.com/yshi112358/Stylish-Game-Public" target="_blank"
+            rel="noreferrer">GitHubで見る</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-meowater" role="dialog" aria-modal="true" aria-labelledby="modal-meowater-title" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-meowater-title">MeoWater</h3>
+        <button class="modal-close" aria-label="閉じる" data-close>×</button>
+      </header>
+      <div class="modal-body">
+        <p>Unityプロトタイプ。ゲームプレイとシステム検証のための実験的プロジェクト。</p>
+        <p><a class="btn primary small" href="https://github.com/yshi112358/MeoWater" target="_blank"
+            rel="noreferrer">GitHubで見る</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-simobe-gtts" role="dialog" aria-modal="true" aria-labelledby="modal-simobe-gtts-title"
+    hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-content">
+      <header class="modal-header">
+        <h3 id="modal-simobe-gtts-title">simobe_gTTS</h3>
+        <button class="modal-close" aria-label="閉じる" data-close>×</button>
+      </header>
+      <div class="modal-body">
+        <p>Discord Bot用の音声読み上げシステム。Google Text-to-Speech (gTTS) を使用してテキストを音声に変換し、Discordチャンネルで読み上げます。</p>
+        <p><a class="btn primary small" href="https://github.com/yshi112358/simobe_gTTS" target="_blank"
+            rel="noreferrer">GitHubで見る</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> 島田優希</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
