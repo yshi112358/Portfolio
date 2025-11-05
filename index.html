@@ -8,9 +8,22 @@
   <meta name="description" content="Portfolio of Yuki Shimada">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Changa+One:ital@0;1&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
+  <script>
+    (function (d) {
+      var config = {
+        kitId: 'spb2pka',
+        scriptTimeout: 3000,
+        async: true
+      },
+        h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+    })(document);
+  </script>
   <!-- For new browsers - multisize ico  -->
   <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="favicon.ico">
 
@@ -26,9 +39,9 @@
   <header class="site-header" data-elevate>
     <a class="logo" href="#home" aria-label="Home"><img id="logo-img" src="assets/favicon-white.svg" alt="" /></a>
     <nav class="nav">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a class="cal-sans-regular" href="#work">Work</a>
+      <a class="cal-sans-regular" href="#about">About</a>
+      <a class="cal-sans-regular" href="#contact">Contact</a>
       <button id="theme-toggle" class="theme-toggle" aria-label="テーマ切替">◐</button>
     </nav>
   </header>
@@ -45,8 +58,20 @@
           <img src="assets/ReImagigate-1.jpg" alt="" loading="lazy">
           <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
           <img src="assets/MeoWater-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-1.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-1.jpg" alt="" loading="lazy">
+          <img src="assets/intelino-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-1.jpg" alt="" loading="lazy">
         </div>
         <div class="track reverse" aria-hidden="true">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
           <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
           <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
           <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
@@ -61,15 +86,21 @@
           <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
           <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
           <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
+          <img src="assets/MeoWater-2.jpg" alt="" loading="lazy">
+          <img src="assets/RhythmBullet-1.jpg" alt="" loading="lazy">
+          <img src="assets/ReImagigate-2.jpg" alt="" loading="lazy">
         </div>
       </div>
       <div class="hero-inner">
         <div class="hero-label">
           <h1 id="hero-title" class="headline">
-            Yuki Shimada
-            <span class="accent">Game × Engineering</span>
+            <span class="cal-sans-regular">Yuki Shimada</span>
+            <span class="accent changa-one-regular-italic">Game × Engineering</span>
           </h1>
-          <p class="subcopy">I love creation.</p>
+          <p class="subcopy">I love making people fun through my creation.</p>
           <div class="cta">
             <a href="#work" class="btn primary">View Work</a>
             <a href="#contact" class="btn ghost">Contact</a>
@@ -80,7 +111,7 @@
 
     <section id="work" class="section" aria-labelledby="work-title">
       <div class="container">
-        <h2 id="work-title" class="section-title">Work</h2>
+        <h2 id="work-title" class="section-title cal-sans-regular">Work</h2>
         <div class="grid projects">
           <article class="card" data-open="rhythmbullet" tabindex="0" aria-label="RhythmBulletの詳細を開く">
             <div class="card-media" style="background-image:url('assets/RhythmBullet-1.jpg')"></div>
@@ -160,7 +191,7 @@
 
     <section id="about" class="section" aria-labelledby="about-title">
       <div class="container">
-        <h2 id="about-title" class="section-title">About</h2>
+        <h2 id="about-title" class="section-title cal-sans-regular">About</h2>
         <div class="about">
           <p>
             作ることが大好きです。
@@ -176,7 +207,7 @@
 
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container">
-        <h2 id="contact-title" class="section-title">Contact</h2>
+        <h2 id="contact-title" class="section-title cal-sans-regular">Contact</h2>
         <div class="contact">
           <a class="btn primary" href="yuki.shimada.chuo27@gmail.com">メールで相談する</a>
           <div class="socials">

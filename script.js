@@ -184,7 +184,10 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
       track.style.animation = 'none';
 
       const { unitWidth } = ensureSeam(track);
-      const distance = track.scrollWidth / 2; // move exactly one unit (after cloning we have 2 units)
+      // Freeze width to avoid dynamic changes during animation
+      const roundedUnit = Math.round(unitWidth);
+      track.style.width = `${roundedUnit * 2}px`;
+      const distance = roundedUnit; // one unit width
       const dir = track.classList.contains('reverse') ? 1 : -1; // reverse→right、通常→左
       const pxps = pxPerSecondForTrack(track);
       const duration = Math.max(1000, (distance / pxps) * 1000);
