@@ -7,11 +7,31 @@ if (storedTheme === "light" || storedTheme === "dark") {
   root.setAttribute("data-theme", storedTheme);
 }
 
+function applyLogoForTheme() {
+  const img = document.getElementById('logo-img');
+  if (!img) return;
+  // Determine current theme: attribute > system preference
+  const attr = root.getAttribute('data-theme');
+  let theme = attr;
+  if (!theme) {
+    theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  img.src = theme === 'dark' ? 'assets/favicon-black.svg' : 'assets/favicon-white.svg';
+}
+
+applyLogoForTheme();
+
+const mediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+mediaDark.addEventListener?.('change', applyLogoForTheme);
+
+// toggle
+
 themeToggle?.addEventListener("click", () => {
   const current = root.getAttribute("data-theme");
   const next = current === "light" ? "dark" : "light";
   root.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
+  applyLogoForTheme();
 });
 
 // Intersection Observer for appear animations
