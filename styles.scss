@@ -120,44 +120,67 @@ body {
 }
 
 .hero {
-    position: relative;
-    height: 70dvh;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
+    position: sticky;
+    display: block;
+    top: -30dvh; // 負の値で上に流れた後、下部30%が見える状態で固定
 
     .hero-bg {
-        position: absolute;
-        inset: -10%;
-        background: radial-gradient(1200px 600px at 50% 20%, color-mix(in oklab, var(--accent) 30%, transparent) 0%, transparent 60%),
-            radial-gradient(900px 500px at 80% 60%, color-mix(in oklab, #00d1ff 24%, transparent) 0%, transparent 60%);
+        position: fixed;
+        top: 0;
+        left: -10%;
+        right: -10%;
+        height: 100dvh;
+        background: radial-gradient(1200px 600px at 50% 20%, color-mix(in oklab, hsl(179, 79%, 46%) 30%, transparent) 0%, transparent 60%),
+            radial-gradient(900px 500px at 80% 60%, color-mix(in oklab, #363e40 24%, transparent) 0%, transparent 60%);
         filter: blur(40px) saturate(120%);
         opacity: 0.6;
         transform: translateZ(0);
+        z-index: -1;
     }
 
     .hero-inner {
         position: relative;
-        text-align: center;
-        padding: 64px 16px 48px; // reduce bottom padding to tighten gap
+        text-align: left;
+        padding: 64px 16px 0;
         z-index: 2;
+        width: 100%;
+        min-height: 60dvh;
+    }
+
+    .hero-portrait {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        max-width: 600px; // デスクトップで大きくなりすぎないよう制限
+        max-height: 70dvh;
+        object-fit: contain;
+        object-position: right bottom;
+        pointer-events: none;
+        z-index: 1;
+        margin-left: auto; // 右寄せ
+        display: block;
+
+        @media (max-width: 720px) {
+            max-width: 100%; // モバイルでは幅いっぱい
+            max-height: 60dvh;
+        }
     }
 
     // Blur label behind text to improve readability over gallery
     .hero-label {
         display: inline-flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         gap: 14px;
-        margin: 0 auto 16px;
-        padding: clamp(16px, 3vw, 28px) clamp(20px, 4vw, 36px);
-        border-radius: 24px;
+        margin: 0 0 16px -16px; // -16px to align with hero-inner left edge
+        padding: clamp(12px, 2vw, 20px); // パディングを縮小
+        border-radius: 0 24px 24px 0;
         background: color-mix(in oklab, var(--bg) 40%, transparent);
         backdrop-filter: blur(14px) saturate(120%);
         -webkit-backdrop-filter: blur(14px) saturate(120%);
         border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.30);
-        max-width: min(92vw, 960px);
     }
 
     .hero-label .cta {
@@ -167,10 +190,10 @@ body {
     }
 
     .headline {
-        font-size: clamp(32px, 7vw, 72px);
+        font-size: clamp(28px, 6vw, 56px); // バランスを取った中間サイズ
         line-height: 1.05;
         letter-spacing: -0.02em;
-        margin: 0 0 16px;
+        margin: 0;
 
         .accent {
             display: block;
@@ -192,22 +215,44 @@ body {
         gap: 12px;
     }
 
-    /**
-     * 上下にテーマ色で馴染ませるグラデーションオーバーレイ
-     * 下地（--bg）へ自然に溶け込むため、透明へフェードさせる
-     */
+}
+
+// Fixed gallery wrapper at top of viewport
+.hero-gallery-wrapper {
+    position: fixed;
+    top: 76px; // ヘッダーの高さ分下げる
+    margin-top: -3dvh;
+    left: 0;
+    right: 0;
+    height: 63dvh; // hero-innerのmin-heightと同じ
+    z-index: 0; // Workセクションより下に配置
+    pointer-events: none;
+    overflow: hidden;
+
+    // 上端をテーマ色にフェード
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 15%;
+        background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+        pointer-events: none;
+        z-index: 2;
+    }
+
+    // 下端をテーマ色にフェード
     &::after {
         content: "";
         position: absolute;
-        inset: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 15%;
+        background: linear-gradient(to top, var(--bg) 0%, transparent 100%);
         pointer-events: none;
-        background:
-            linear-gradient(to bottom, var(--bg) 0%, transparent 18%),
-            linear-gradient(to top, var(--bg) 0%, transparent 18%);
-        /* Safari等での合成差異を避けるため通常ブレンド */
-        mix-blend-mode: normal;
-        z-index: 1;
-        /* ギャラリーより上、テキスト(.hero-inner)より下に配置 */
+        z-index: 2;
     }
 }
 
@@ -220,17 +265,23 @@ body {
     mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
     display: grid;
     align-items: center;
+    gap: 16px; // 行間の間隔
 
     .track {
         display: flex;
         gap: 16px;
         will-change: transform;
+        // CSSアニメーション（JSが無効な場合のフォールバック）
+        // JS有効時はWeb Animations APIで上書きされる
         animation: marquee 40s linear infinite;
         padding: 0;
         border: 0;
         box-sizing: content-box; // ensure width calc isn't offset by border-box
         justify-content: flex-start;
         align-items: center;
+        // GPU レイヤー最適化
+        transform: translateZ(0);
+        backface-visibility: hidden;
     }
 
     .track.reverse {
@@ -238,11 +289,11 @@ body {
     }
 
     img {
-        height: 22lvh; // more stable against mobile UI chrome; keep intrinsic aspect ratio
+        height: 20dvh; // 3行が60dvh内に収まるよう調整（17dvh × 3 + gap = 約55dvh）
         width: auto;
         flex: 0 0 auto; // avoid flex shrink/basis rounding that causes drift
         border-radius: clamp(12px, 2vw, 22px);
-        box-shadow: 0 14px 50px rgba(0, 0, 0, 0.35);
+        box-shadow: none;
         object-fit: cover;
         background: color-mix(in oklab, var(--bg-elev) 92%, transparent);
     }
@@ -290,6 +341,11 @@ body {
         color: var(--text);
     }
 
+    &.secondary {
+        background: var(--bg);
+        color: var(--text);
+    }
+
     &.small {
         padding: 8px 12px;
         border-radius: 10px;
@@ -300,6 +356,9 @@ body {
 
 .section {
     padding: 3dvh 0;
+    position: relative;
+    z-index: 1; // hero-gallery-wrapperの上に重なる
+    background: var(--bg); // 背景色で下のギャラリーを隠す
 }
 
 .section-title {
@@ -507,6 +566,41 @@ body {
 .modal-body {
     padding: 20px;
     color: var(--text);
+
+    h4 {
+        margin: 20px 0 8px;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text);
+
+        &:first-of-type {
+            margin-top: 16px;
+        }
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 20px;
+
+        li {
+            margin-bottom: 6px;
+            color: var(--muted);
+            line-height: 1.5;
+
+            strong {
+                color: var(--text);
+            }
+        }
+    }
+
+    p {
+        color: var(--muted);
+        margin: 0 0 12px;
+
+        strong {
+            color: var(--text);
+        }
+    }
 }
 
 .modal-close {

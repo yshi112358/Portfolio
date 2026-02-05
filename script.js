@@ -59,6 +59,7 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 // Work modals
 (function setupWorkModals() {
   const map = new Map([
+    ["rhythmbullet", "modal-rhythmbullet"],
     ["intelino", "modal-intelino"],
     ["reimagigate", "modal-reimagigate"],
     ["meowater", "modal-meowater"],
@@ -163,7 +164,9 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     track.replaceChildren(...originals.map((n) => n.cloneNode(true)));
     const first = track.firstElementChild.getBoundingClientRect();
     const last = track.lastElementChild.getBoundingClientRect();
-    const unitWidth = last.right - first.left;
+    // ユニット間のgapも含めて計算（次のユニットとの間にもgapが入る）
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    const unitWidth = last.right - first.left + gap;
 
     // Then build exactly TWO units for a perfect 50% loop distance
     const secondUnit = originals.map((n) => n.cloneNode(true));
