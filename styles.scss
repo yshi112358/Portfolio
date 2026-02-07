@@ -378,7 +378,7 @@ body {
         }
 
         @media (max-width: 640px) {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
         }
     }
 }
@@ -476,7 +476,7 @@ body {
 
 @media (max-width: 640px) {
     .card {
-        grid-column: span 1; // 2列時: 2枚/行
+        grid-column: span 1; // 1列時: 1枚/行
     }
 }
 
@@ -499,13 +499,8 @@ body {
 .contact {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 16px;
-
-    @media (max-width: 720px) {
-        flex-direction: column;
-        align-items: start;
-    }
+    flex-wrap: wrap;
 }
 
 .socials {

@@ -341,7 +341,7 @@ body {
 }
 @media (max-width: 640px) {
   .grid.projects {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -444,14 +444,8 @@ body {
 .contact {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
-}
-@media (max-width: 720px) {
-  .contact {
-    flex-direction: column;
-    align-items: start;
-  }
+  flex-wrap: wrap;
 }
 
 .socials {
