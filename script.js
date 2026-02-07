@@ -230,4 +230,59 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
   ro.observe(gallery);
 })();
 
+// Loader: hide after page load
+(function setupLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
 
+  // Sequence square: draw path along viewport edges
+  const track = loader.querySelector('.loader-track');
+  if (track) {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const inset = 15; // half of stroke-width (30 / 2)
+    // Counter-clockwise from top-left: down → right → up → left
+    // Start 1px before corner and end 1px past it to eliminate gaps at both ends
+    track.setAttribute('d',
+      `M ${inset},0 L ${inset},${h - inset} L ${w - inset},${h - inset} L ${w - inset},${inset} L ${inset},${inset} L ${inset},${inset + 1}`
+    );
+    const perimeter = 2 * (w - 2 * inset) + 2 * (h - 2 * inset) + 2;
+    track.style.strokeDasharray = perimeter;
+    track.style.strokeDashoffset = perimeter;
+    // Use Web Animations API for reliable playback
+    track.animate([
+      { strokeDashoffset: perimeter },
+      { strokeDashoffset: 0 }
+    ], { duration: 2000, easing: 'ease-in-out', fill: 'forwards' });
+  }
+
+  // Apply correct logo for current theme
+  const loaderLogo = loader.querySelector('.loader-logo');
+  if (loaderLogo) {
+    const attr = document.documentElement.getAttribute('data-theme');
+    let theme = attr;
+    if (!theme) {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    loaderLogo.src = theme === 'dark' ? 'assets/favicon-black.svg' : 'assets/favicon-white.svg';
+  }
+
+  function hideLoader() {
+    if (loader.classList.contains('is-hidden')) return;
+    loader.classList.add('is-hidden');
+    loader.addEventListener('transitionend', () => {
+      loader.style.display = 'none';
+    }, { once: true });
+  }
+
+  // Both conditions must be met: page loaded AND 3s elapsed
+  let pageLoaded = false;
+  let minTimeElapsed = false;
+
+  function tryHide() {
+    if (pageLoaded && minTimeElapsed) setTimeout(hideLoader, 1000);
+  }
+
+  window.addEventListener('load', () => { pageLoaded = true; tryHide(); });
+  setTimeout(() => { minTimeElapsed = true; tryHide(); }, 2000);
+})();
